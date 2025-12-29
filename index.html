@@ -1,1 +1,3439 @@
-<h1>Olá, mundo!</h1>
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPC | Personal Trainer - Treino Personalizado & Ciência Aplicada</title>
+    <meta name="description"
+        content="Rui Pedro Carmo - Personal Trainer especializado em transformação física e mental. Treinos personalizados, acompanhamento nutricional e app exclusivo para maximizar os seus resultados fitness.">
+    <meta name="keywords"
+        content="personal trainer, fitness, workout, nutrition, health, gym, exercise, muscle building, weight loss, app fitness, transformação física, Rui Pedro Carmo">
+    <meta name="author" content="Rui Pedro Carmo">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rpc-pt.github.io/index.html">
+    <meta property="og:title" content="RPC | Personal Trainer - Treino Personalizado & Ciência Aplicada">
+    <meta property="og:description"
+        content="Rui Pedro Carmo - Personal Trainer especializado em transformação física e mental. Treinos personalizados, acompanhamento nutricional e app exclusivo para maximizar os seus resultados fitness.">
+    <meta property="og:image" content="https://rpc-pt.github.io/assets/img/preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rpc-pt.github.io/index.html">
+    <meta property="twitter:title" content="RPC | Personal Trainer - Treino Personalizado & Ciência Aplicada">
+    <meta property="twitter:description"
+        content="Rui Pedro Carmo - Personal Trainer especializado em transformação física e mental. Treinos personalizados, acompanhamento nutricional e app exclusivo para maximizar os seus resultados fitness.">
+    <meta property="twitter:image" content="https://rpc-pt.github.io/assets/img/preview.png">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Prevent horizontal overflow */
+        html {
+            overflow-x: hidden;
+        }
+
+        /* Ensure all images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Prevent text overflow */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        :root {
+            --primary-yellow: #FFE135;
+            --primary-orange: #c58f12;
+            --primary-brown: #3d2b07;
+            --dark-brown: #3d2b07;
+            --darker-brown: #2E1A16;
+            --light-yellow: #FFF44F;
+            --cream: #F5F5DC;
+            --white: #FFFFFF;
+            --dark-text: #FFFFFF;
+            --light-text: #E0E0E0;
+            --text-on-light: #2C1810;
+            --gradient-primary: linear-gradient(135deg, #3d2b07 0%, #c58f12 100%);
+            --gradient-secondary: linear-gradient(135deg, #FFE135 0%, #c58f12 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2E1A16 100%);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--darker-brown);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary-brown);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--text-on-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Mobile app link - hidden on desktop */
+        .mobile-app-link {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--primary-brown);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            /* Show mobile app link in menu */
+            .mobile-app-link {
+                display: block;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .mobile-app-link a {
+                background: var(--white);
+                color: var(--primary-brown);
+                padding: 0.8rem 1.5rem;
+                border-radius: 50px;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            /* Hide desktop CTA button on mobile */
+            .cta-button.desktop-only {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="none"><path d="M0,0 L1000,0 L1000,80 C750,100 250,100 0,80 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--text-on-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--text-on-light);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            margin-bottom: 3rem;
+        }
+
+        .section-title.white-bg {
+            color: var(--primary-brown);
+        }
+
+        .section-title.dark-bg {
+            color: var(--primary-yellow);
+        }
+
+        .section-title.light-bg {
+            color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 2px solid var(--primary-orange);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(197, 143, 18, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: var(--text-on-light);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(197, 143, 18, 0.2);
+            border-color: var(--primary-yellow);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-brown);
+            margin-bottom: 1rem;
+        }
+
+        /* App Features Section */
+        .app-features {
+            padding: 4rem 2rem;
+            background: var(--dark-brown);
+        }
+
+        .app-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .app-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(61, 43, 7, 0.8);
+            border: 1px solid rgba(197, 143, 18, 0.2);
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .app-feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 225, 53, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .app-feature:hover::before {
+            left: 100%;
+        }
+
+        .app-feature:hover {
+            transform: translateX(15px) scale(1.02);
+            background: rgba(197, 143, 18, 0.9);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 10px 30px rgba(197, 143, 18, 0.3);
+        }
+
+        .app-feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            min-width: 60px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-feature:hover .app-feature-icon {
+            transform: rotateY(360deg) scale(1.2);
+            color: var(--white);
+            text-shadow: 0 0 20px rgba(255, 225, 53, 0.8);
+        }
+
+        .app-feature-content {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .app-feature h4 {
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .app-feature p {
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .app-feature:hover h4 {
+            color: var(--primary-yellow);
+            transform: translateY(-2px);
+        }
+
+        .app-feature:hover p {
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        /* Feature Details Popup */
+        .feature-details {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 225, 53, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--primary-brown);
+            padding: 1rem;
+            border-radius: 0 0 15px 15px;
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            z-index: 3;
+            border-top: 2px solid var(--primary-brown);
+        }
+
+        .app-feature:hover .feature-details {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .feature-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-brown);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Floating particles animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translateY(-15px) rotate(90deg) scale(1.1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(180deg) scale(0.9);
+                opacity: 0.4;
+            }
+
+            75% {
+                transform: translateY(-20px) rotate(270deg) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.3;
+            font-size: 1.2rem;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 10px rgba(255, 225, 53, 0.5);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .floating-icon:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(6) {
+            top: 70%;
+            right: 5%;
+            animation-delay: 5s;
+        }
+
+        .floating-icon:nth-child(7) {
+            top: 30%;
+            left: 50%;
+            animation-delay: 2.5s;
+        }
+
+        .floating-icon:nth-child(8) {
+            bottom: 50%;
+            right: 30%;
+            animation-delay: 1.5s;
+        }
+
+        /* Floating icons for contact section - darker style */
+        .contact .floating-icon {
+            opacity: 0.15;
+            color: rgba(61, 43, 7, 0.4);
+            text-shadow: none;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .instagram-post {
+            background: var(--white);
+            border: 2px solid var(--primary-orange);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(197, 143, 18, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .instagram-post:hover {
+            transform: scale(1.02);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 15px 40px rgba(197, 143, 18, 0.25);
+        }
+
+        .instagram-post:hover {
+            transform: scale(1.05);
+        }
+
+        .instagram-post iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: var(--primary-brown);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Cards */
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card .contact-card-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card.whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .contact-card.whatsapp:hover {
+            background: #128c7e;
+        }
+
+        .contact-card.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+        }
+
+        .contact-card.app {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .contact-card-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-card-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-card-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .whatsapp-bubble {
+            position: relative;
+            background: #25d366;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 20px 20px 20px 5px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .whatsapp-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 0 0;
+            border-color: #25d366 transparent transparent transparent;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 225, 53, 0.3);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            color: var(--primary-brown);
+        }
+
+        .contact-form h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(61, 43, 7, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            color: var(--primary-brown);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px rgba(61, 43, 7, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(61, 43, 7, 0.5);
+            font-style: italic;
+            font-weight: 400;
+            font-size: 0.9em;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        /* Form Submit Button */
+        .contact-form .btn-primary {
+            background: var(--gradient-secondary);
+            color: var(--primary-brown);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(255, 225, 53, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-form .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(255, 225, 53, 0.6);
+            background: var(--gradient-secondary);
+        }
+
+        /* Separator */
+        .separator {
+            display: none;
+            /* Hidden by default on desktop */
+        }
+
+        /* Share Buttons */
+        .share-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-btn.facebook {
+            background: #3b5998;
+        }
+
+        .share-btn.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .share-btn.whatsapp {
+            background: #25d366;
+        }
+
+        .share-btn.linkedin {
+            background: #0077b5;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .credits {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(197, 143, 18, 0.2);
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .credits a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .credits a:hover {
+            opacity: 0.8;
+        }
+
+        .credits i {
+            color: #e74c3c;
+            margin: 0 0.2rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-yellow);
+            color: var(--primary-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(255, 225, 53, 0.4);
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 225, 53, 0.6);
+        }
+
+        .horizontal-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .horizontal-card:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .horizontal-card img {
+            transition: transform 0.4s ease;
+        }
+
+        /* Pulse animation for WhatsApp */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .whatsapp-card {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Feature Cards enhanced animations */
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(197, 143, 18, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scale(1);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg) scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(197, 143, 18, 0.8));
+        }
+
+        .feature-icon {
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Navigation hover effects */
+        .nav-links a {
+            position: relative;
+        }
+
+        /* Scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Button hover effects */
+        .btn-primary,
+        .btn-secondary {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before,
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary:hover::before,
+        .btn-secondary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Storytelling Section Styles */
+        .story-section {
+            padding: 4rem 2rem;
+            background: var(--darker-brown);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .story-section .section-title {
+            color: var(--primary-yellow);
+        }
+
+        .story-carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0 2rem;
+        }
+
+        .story-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .story-carousel::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .story-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary-orange);
+            border-radius: 4px;
+        }
+
+        .story-card {
+            flex: 0 0 280px;
+            scroll-snap-align: start;
+            background: var(--dark-brown);
+            border: 2px solid var(--primary-orange);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .story-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 0.2rem;
+        }
+
+        .story-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-orange);
+        }
+
+        .story-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: var(--light-text);
+        }
+
+        .story-icons {
+            margin-top: auto;
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .story-icons a {
+            color: var(--primary-yellow);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .story-icons a:hover {
+            color: var(--primary-orange);
+        }
+
+        .story-card.in-progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            border-style: dashed;
+            border-color: var(--primary-yellow);
+            animation: pulseGlow 1.5s infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(255, 225, 53, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 225, 53, 0.8);
+            }
+        }
+
+        /* Timeline Section Styles */
+        .timeline-section {
+            padding: 4rem 2rem;
+            background: var(--white);
+            color: var(--dark-text);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .timeline-section .section-title {
+            color: var(--primary-brown);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Seção da Timeline do Carousel */
+        #timeline {
+            padding: 4rem 2rem;
+            background: var(--darker-brown);
+            color: var(--white);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #timeline .text-center {
+            color: var(--primary-yellow);
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Seção Motivacional */
+        .motivation-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(225deg, #FFD700 0%, #FFA500 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .motivation-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            line-height: 1.3;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .motivation-text strong {
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--white);
+        }
+
+        /* Story Cards */
+        .story-cards-container {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .story-card-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            background: var(--dark-brown);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--dark-brown);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .story-card-row:hover {
+            background: var(--primary-brown);
+            border-color: var(--primary-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(197, 143, 18, 0.3);
+        }
+
+        .story-card-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .story-card-image {
+            flex: 0 0 300px;
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .story-card-row:hover .story-card-image {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 30px rgba(255, 225, 53, 0.4);
+        }
+
+        .story-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .story-card-text {
+            flex: 1;
+            color: var(--white);
+        }
+
+        .story-card-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .story-final-text {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            color: var(--white);
+            line-height: 1.8;
+            padding: 2rem;
+            background: rgba(255, 225, 53, 0.1);
+            border-radius: 15px;
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .story-final-text strong {
+            color: var(--primary-yellow);
+        }
+
+        /* Container wrapper para limitar largura */
+        .timeline-carousel-wrapper {
+            max-width: 1200px;
+            /* Mesma largura do container */
+            margin: 0 auto;
+            overflow: visible;
+            /* Permite ver as bordas completas */
+            padding: 0 2rem 4rem;
+            position: relative;
+        }
+
+        /* Indicadores de pontos (dots) */
+        .timeline-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Desktop: dots aparecem abaixo do carousel */
+        @media (min-width: 769px) {
+            .timeline-dots {
+                margin-top: 3rem;
+            }
+        }
+
+        /* Mobile: dots aparecem dentro dos controles */
+        @media (max-width: 768px) {
+            .timeline-dots {
+                margin: 0;
+            }
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 225, 53, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-dot:hover {
+            background: rgba(255, 225, 53, 0.5);
+            transform: scale(1.2);
+        }
+
+        .timeline-dot.active {
+            background: var(--primary-yellow);
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 15px rgba(255, 225, 53, 0.8);
+            transform: scale(1.3);
+        }
+
+        .timeline-carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: hidden;
+            overflow-y: visible;
+            /* Permite que imagens e badges ultrapassem verticalmente */
+            scroll-snap-type: none;
+            padding: 140px 12px 120px;
+            /* Padding superior 140px para imagens que ultrapassam 84px + inferior 120px para cards expandidos */
+            margin: 0 auto;
+            /* Garante que apenas 3 cards são visíveis */
+            scroll-padding: 0;
+            /* Limita a largura visível para 3 cards + espaço para bordas */
+            max-width: 954px;
+            /* 3 cards de 300px + 2 gaps de 1.5rem + 24px (bordas) = 954px */
+        }
+
+        .timeline-carousel::-webkit-scrollbar {
+            display: none;
+            /* Esconde completamente o scrollbar */
+        }
+
+        .timeline-carousel {
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+        }
+
+        .timeline-card {
+            position: relative;
+            flex: 0 0 300px;
+            /* Largura fixa de 300px */
+            width: 300px;
+            height: 220px;
+            background: var(--primary-orange);
+            /* Borda fina e suave */
+            border: 2px solid var(--dark-text);
+            border-radius: 20px;
+            overflow: visible;
+            /* Permite imagens ultrapassarem o topo */
+            scroll-snap-align: center;
+            /* Centraliza no scroll */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Esconde cards que não estão ativos no desktop */
+            display: none;
+        }
+
+        /* Desktop: mostra apenas os cards com classes ativas */
+        @media (min-width: 769px) {
+
+            .timeline-card.expanded,
+            .timeline-card.next-card,
+            .timeline-card.next-next-card {
+                display: block;
+            }
+
+            .timeline-card.expanded {
+                order: 0;
+            }
+
+            .timeline-card.next-card {
+                order: 1;
+            }
+
+            .timeline-card.next-next-card {
+                order: 2;
+            }
+        }
+
+        /* Mobile: mostra cards com classes mobile */
+        @media (max-width: 768px) {
+
+            .timeline-card.expanded,
+            .timeline-card.prev-card,
+            .timeline-card.next-card {
+                display: block;
+            }
+
+            /* Desabilita completamente interação com cards no mobile */
+            .timeline-card {
+                pointer-events: none;
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+            }
+
+            /* Força dimensões fixas para cards não expandidos - previne expansão por hover */
+            .timeline-card:not(.expanded) {
+                height: 220px !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                background: var(--primary-orange) !important;
+                border-color: var(--dark-text) !important;
+            }
+
+            .timeline-card:not(.expanded) img {
+                filter: grayscale(100%) contrast(0.8) brightness(0.8) !important;
+                bottom: 0 !important;
+                top: auto !important;
+                height: 280px !important;
+            }
+
+            .timeline-card:not(.expanded) .card-content {
+                height: 0 !important;
+                opacity: 0 !important;
+            }
+
+            .timeline-card:not(.expanded) .year-watermark {
+                color: var(--primary-brown) !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .timeline-card:not(.expanded) .year-badge {
+                background: var(--primary-yellow) !important;
+                color: var(--primary-brown) !important;
+                transform: translateX(-50%) !important;
+            }
+
+            /* Mantém interação apenas nos botões de navegação */
+            .timeline-nav-button {
+                pointer-events: auto;
+            }
+
+            .timeline-dot {
+                pointer-events: auto;
+            }
+        }
+
+        .timeline-card.in-progress {
+            border-style: dashed;
+            border-color: var(--primary-yellow);
+        }
+
+        .timeline-card img {
+            position: absolute;
+            /* Imagem ultrapassa o topo do card */
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 280px;
+            /* Ajusta a altura da imagem */
+            object-position: bottom;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(0.8) brightness(0.8);
+            transition: filter 0.4s ease, bottom 0.4s ease, height 0.4s ease, top 0.4s ease;
+            z-index: 2;
+            /* Aplica border-radius apenas na parte que fica dentro do card */
+            border-radius: 20px;
+            clip-path: inset(0 0 -100px 0 round 20px);
+        }
+
+        .timeline-card .year-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-brown);
+            z-index: 1;
+            pointer-events: none;
+            transition: all 0.4s;
+        }
+
+        .timeline-card .year-badge {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-yellow);
+            border: 2px solid var(--dark-text);
+            color: var(--primary-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            z-index: 3;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-card .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            /* Começa escondido */
+            background: linear-gradient(135deg, rgba(61, 43, 7, 0.95) 0%, rgba(61, 43, 7, 0.98) 100%);
+            color: var(--white);
+            padding: 1rem;
+            opacity: 0;
+            transition: height 0.4s ease, opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .timeline-card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .timeline-card p {
+            margin: 0.5rem 0 0;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        /* Estado expandido (programático) */
+        .timeline-card.expanded {
+            height: 360px;
+            margin-top: -60px;
+            margin-bottom: -60px;
+            transform: translateY(-5px);
+            background: var(--primary-yellow);
+            border-color: var(--primary-yellow);
+        }
+
+        .timeline-card.expanded img {
+            filter: none;
+            bottom: auto;
+            top: -104px;
+            height: 280px;
+            border-radius: 0;
+            clip-path: none;
+        }
+
+        .timeline-card.expanded .card-content {
+            height: 180px;
+            opacity: 1;
+        }
+
+        .timeline-card.expanded .year-watermark {
+            color: var(--white);
+            top: 85px;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .timeline-card.expanded .year-badge {
+            background: var(--primary-yellow);
+            color: var(--white);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        /* Hover só funciona se não estiver expandido e apenas no desktop */
+        @media (min-width: 769px) {
+            .timeline-card:not(.expanded):hover {
+                height: 360px;
+                /* Expande para 360px */
+                margin-top: -60px;
+                /* Cresce 60px para cima */
+                margin-bottom: -60px;
+                /* Compensa para manter centralizado */
+                transform: translateY(-5px);
+                border-color: var(--primary-yellow);
+            }
+
+            .timeline-card:not(.expanded):hover img {
+                filter: none;
+                bottom: auto;
+                top: -84px;
+                /* Posiciona a partir do topo */
+                height: 280px;
+                /* Ajusta a altura da imagem */
+            }
+
+            .timeline-card:not(.expanded):hover .card-content {
+                height: 160px;
+                /* Mostra o conteúdo */
+                opacity: 1;
+            }
+
+            .timeline-card:not(.expanded):hover .year-watermark {
+                color: var(--white);
+                top: 85px;
+                /* Posiciona a partir do topo */
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+
+            .timeline-card:not(.expanded):hover .year-badge {
+                background: var(--primary-yellow);
+                color: var(--white);
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        /* Desabilita hover em dispositivos touch (qualquer tamanho de tela) */
+        @media (hover: none) and (pointer: coarse) {
+            .timeline-card:hover,
+            .timeline-card:active,
+            .timeline-card:focus {
+                height: 220px !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                transform: none !important;
+                background: var(--primary-orange) !important;
+                border-color: var(--dark-text) !important;
+            }
+
+            .timeline-card:not(.expanded):hover img,
+            .timeline-card:not(.expanded):active img,
+            .timeline-card:not(.expanded):focus img {
+                filter: grayscale(100%) contrast(0.8) brightness(0.8) !important;
+                bottom: 0 !important;
+                top: auto !important;
+                height: 280px !important;
+            }
+
+            .timeline-card:not(.expanded):hover .card-content,
+            .timeline-card:not(.expanded):active .card-content,
+            .timeline-card:not(.expanded):focus .card-content {
+                height: 0 !important;
+                opacity: 0 !important;
+            }
+
+            .timeline-card:not(.expanded):hover .year-watermark,
+            .timeline-card:not(.expanded):active .year-watermark,
+            .timeline-card:not(.expanded):focus .year-watermark {
+                color: var(--primary-brown) !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+
+            .timeline-card:not(.expanded):hover .year-badge,
+            .timeline-card:not(.expanded):active .year-badge,
+            .timeline-card:not(.expanded):focus .year-badge {
+                background: var(--primary-yellow) !important;
+                color: var(--primary-brown) !important;
+                transform: translateX(-50%) !important;
+            }
+
+            .timeline-card.expanded:hover {
+                background: var(--primary-yellow) !important;
+                border-color: var(--primary-yellow) !important;
+            }
+        }
+
+        /* Timeline Navigation Arrows */
+        .timeline-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            background-color: var(--brown);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-nav-button:hover {
+            background: var(--primary-yellow);
+            border-color: var(--primary-yellow);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 8px 25px rgba(197, 143, 18, 0.3);
+        }
+
+        .timeline-nav-button i {
+            font-size: 1.5rem;
+        }
+
+        .timeline-nav-prev {
+            left: -25px;
+        }
+
+        .timeline-nav-next {
+            right: -25px;
+        }
+
+        /* Timeline Controls Container para Mobile */
+        .timeline-controls {
+            display: none;
+            /* Escondido no desktop */
+        }
+
+        @media (min-width: 769px) {
+            .timeline-nav-button.desktop-only {
+                display: flex;
+            }
+
+            .timeline-dots.desktop-only {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline-controls {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .timeline-dots.desktop-only {
+                display: none !important;
+            }
+
+            /* Melhora visibilidade dos dots no mobile */
+            .timeline-controls .timeline-dot {
+                width: 12px;
+                height: 12px;
+                background: rgba(255, 255, 255, 0.4);
+                border: 2px solid rgba(255, 225, 53, 0.6);
+            }
+
+            .timeline-controls .timeline-dot.active {
+                background: var(--primary-yellow);
+                border-color: var(--primary-yellow);
+                box-shadow: 0 0 15px rgba(255, 225, 53, 0.9);
+                transform: scale(1.4);
+            }
+
+            .timeline-nav-button {
+                position: static;
+                transform: none;
+                width: 45px;
+                height: 45px;
+            }
+
+            .timeline-nav-button:hover {
+                transform: scale(1.15);
+            }
+
+            .timeline-nav-button.desktop-only {
+                display: none !important;
+            }
+
+            /* Stack layout para mobile */
+            .timeline-carousel {
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                padding: 200px 20px 80px;
+                gap: 0;
+                overflow: visible !important;
+                overflow-x: visible !important;
+                scroll-snap-type: none !important;
+                -webkit-overflow-scrolling: auto !important;
+            }
+
+            .timeline-card {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%) scale(0.85);
+                opacity: 0.5;
+                z-index: 1;
+                transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                            opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                            z-index 0s;
+                pointer-events: none;
+                cursor: default;
+                scroll-snap-align: none !important;
+            }
+
+            .timeline-card.expanded {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 1;
+                z-index: 3;
+                pointer-events: none;
+            }
+
+            /* Card anterior (à esquerda) */
+            .timeline-card.prev-card {
+                transform: translateX(-130%) scale(0.85);
+                opacity: 0.6;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            /* Card próximo (à direita) */
+            .timeline-card.next-card {
+                transform: translateX(30%) scale(0.85);
+                opacity: 0.6;
+                z-index: 2;
+                pointer-events: none;
+            }
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .app-grid {
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                gap: 2rem;
+            }
+
+            /* Esconde dots do desktop no tablet */
+            .timeline-dots.desktop-only {
+                display: none !important;
+            }
+
+            /* Timeline para tablet - 2 cards visíveis */
+            .timeline-carousel-wrapper {
+                padding: 0 1.5rem 4rem;
+                overflow: visible;
+            }
+
+            .timeline-carousel {
+                padding: 140px 12px 120px;
+                max-width: 639px;
+                /* 2 cards de 300px + 1 gap de 1.5rem + 24px (bordas) = 639px */
+            }
+
+            .timeline-card {
+                flex: 0 0 300px;
+                width: 300px;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-card {
+                margin: 0 1rem;
+            }
+
+            .app-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            /* Show separator on mobile */
+            .separator {
+                display: flex;
+                align-items: center;
+                margin: 1rem 0;
+                color: var(--white);
+                font-weight: 600;
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+            .separator::before,
+            .separator::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.3);
+            }
+
+            .separator::before {
+                margin-right: 1rem;
+            }
+
+            .separator::after {
+                margin-left: 1rem;
+            }
+
+            .share-buttons {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .share-button {
+                flex: 1 1 calc(50% - 0.25rem);
+                min-width: 140px;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            /* Story cards responsivo */
+            .story-cards-container {
+                padding: 0 1rem;
+            }
+
+            .story-card-row {
+                flex-direction: column !important;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .story-card-row.reverse {
+                flex-direction: column !important;
+            }
+
+            .story-card-image {
+                flex: 0 0 250px;
+                width: 100%;
+                max-width: 350px;
+                height: 250px;
+            }
+
+            .story-card-text p {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            .story-final-text {
+                font-size: 1rem;
+                padding: 1.5rem;
+            }
+
+            /* Timeline responsivo para mobile */
+            .timeline-carousel-wrapper {
+                padding: 0 1rem 3rem;
+                overflow: visible;
+            }
+
+            .timeline-carousel {
+                padding: 160px 12px 180px;
+                max-width: 324px;
+                /* 1 card de 300px + 24px (bordas) visível */
+            }
+
+            .timeline-card {
+                flex: 0 0 300px;
+                width: 300px;
+                height: 220px;
+            }
+
+            .timeline-card img {
+                height: 280px;
+            }
+
+            .timeline-card:hover {
+                height: 360px;
+                margin-top: -60px;
+                margin-bottom: -60px;
+            }
+
+            .timeline-card:hover img {
+                height: 280px;
+                top: -87px;
+            }
+
+            .timeline-card:hover .card-content {
+                height: 220px;
+            }
+
+            /* Ajustar setas para mobile */
+            .timeline-nav-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .timeline-nav-button i {
+                font-size: 1.2rem;
+            }
+
+            .timeline-nav-prev {
+                left: -20px;
+            }
+
+            .timeline-nav-next {
+                right: -20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features,
+            .app-features,
+            .instagram-section,
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+                margin: 0;
+            }
+
+            .feature-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .share-button {
+                font-size: 0.9rem;
+                padding: 0.7rem 1rem;
+            }
+
+            /* Timeline ainda mais compacto para telas pequenas */
+            .timeline-carousel-wrapper {
+                padding: 0 0.5rem;
+                overflow: visible;
+            }
+
+            .timeline-carousel {
+                padding: 200px 10px;
+                max-width: 270px;
+                /* 1 card de 250px + 20px (bordas) visível centralizado (reduzido proporcionalmente) */
+            }
+
+            .timeline-card {
+                flex: 0 0 250px;
+                width: 250px;
+                height: 183px;
+                /* Proporcional a 220px -> 183px (83% de 300px -> 250px) */
+            }
+
+            .timeline-card:hover {
+                height: 300px;
+                /* Proporcional a 360px -> 300px */
+                margin-top: -50px;
+                margin-bottom: -50px;
+            }
+
+            .timeline-card img {
+                height: 233px;
+                /* Proporcional a 280px -> 233px */
+            }
+
+            .timeline-card:hover img {
+                height: 233px;
+                top: -72px;
+                /* Proporcional a -87px -> -72px */
+            }
+
+            .timeline-card:hover .card-content {
+                height: 133px;
+                /* Proporcional a 160px -> 133px */
+            }
+
+            /* Setas menores para mobile pequeno */
+            .timeline-nav-button {
+                width: 35px;
+                height: 35px;
+            }
+
+            .timeline-nav-button i {
+                font-size: 1rem;
+            }
+
+            .timeline-nav-prev {
+                left: -15px;
+            }
+
+            .timeline-nav-next {
+                right: -15px;
+            }
+
+            /* Horizontal cards responsiveness */
+            .horizontal-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1rem !important;
+            }
+
+            .horizontal-card img {
+                width: 60px !important;
+                height: 60px !important;
+            }
+
+            .whatsapp-card {
+                padding: 1.2rem !important;
+            }
+
+            .whatsapp-card h3 {
+                font-size: 1.2rem !important;
+            }
+
+            .whatsapp-card p {
+                font-size: 0.9rem !important;
+            }
+
+            .whatsapp-card a {
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.5rem !important;
+            }
+
+            /* Reduce WhatsApp card bottom margin on mobile */
+            .whatsapp-card {
+                margin-bottom: 0.5rem !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero {
+                padding: 5rem 0.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .features,
+            .app-features,
+            .instagram-section,
+            .contact {
+                padding: 2.5rem 0.5rem;
+            }
+
+            .feature-card {
+                padding: 1rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .horizontal-card {
+                padding: 1rem !important;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">RPC</a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#app">App</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li class="mobile-app-link"><a href="https://rpc-personal-3ljb.glide.page/dl/da19fa" target="_blank"><i class="fas fa-mobile-alt"></i> Aceder à App</a></li>
+            </ul>
+            <a href="https://rpc-personal-3ljb.glide.page/dl/da19fa" target="_blank" class="cta-button desktop-only">
+                <i class="fas fa-mobile-alt"></i> Aceder à App
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>RPC | Personal Trainer</h1>
+            <div class="hero-subtitle">Treino Personalizado </div>
+            <div class="hero-description">
+                Atinge o teu melhor físico e mental com <strong>Rui Pedro Carmo</strong>
+            </div>
+            <div class="hero-buttons">
+                <a href="https://rpc-personal-3ljb.glide.page/dl/da19fa" target="_blank" class="btn-primary">
+                    <i class="fas fa-play"></i> Começar Agora
+                </a>
+                <a href="https://wa.me/351918293687?text=Olá Rui! Gostaria de saber mais sobre o treino personalizado."
+                    target="_blank" class="btn-secondary">
+                    <i class="fab fa-whatsapp"></i> Contacta-me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- História / Storytelling Section -->
+    <section id="historia" class="timeline-section">
+        <h2 class="section-title">A Minha História</h2>
+        <!-- Story Cards -->
+        <div class="story-cards-container">
+            <div class="story-card-row">
+                <div class="story-card-image">
+                    <img src="assets/img/tshirt.png" alt="Maratona">
+                </div>
+                <div class="story-card-text">
+                    <p>
+                        Sou Rui Pedro Carmo, um Personal Trainer, estou com excesso de peso e nesta área, o aspeto
+                        físico é importante e muitas vezes, as pessoas são julgadas sem lhes conhecerem a história.
+                        Então por isso, quero mostrar-vos a minha história:
+                        <br><br>
+                        Tenho mais de 45 anos, fiz uma maratona há 3,5 anos. Tenho uma lesão que me obrigou a parar de
+                        correr e de jogar ténis de mesa, o que me fez ganhar 10 kg.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Carousel Section -->
+    <section id="timeline" style="position: relative;">
+        <!-- Floating Icons Background para Timeline -->
+        <div class="floating-icon" style="position: absolute; top: 10%; left: 5%;"><i class="fas fa-table-tennis"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; top: 20%; right: 8%;"><i class="fas fa-running"></i></div>
+        <div class="floating-icon" style="position: absolute; bottom: 25%; left: 10%;"><i class="fas fa-dumbbell"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 15%; right: 12%;"><i
+                class="fas fa-shoe-prints"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 50%; left: 3%;"><i class="fas fa-futbol"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 60%; right: 5%;"><i
+                class="fas fa-basketball-ball"></i></div>
+        <div class="floating-icon" style="position: absolute; bottom: 40%; left: 15%;"><i class="fas fa-walking"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; top: 35%; right: 10%;"><i class="fas fa-trophy"></i></div>
+        <div class="floating-icon" style="position: absolute; bottom: 50%; right: 18%;"><i class="fas fa-heartbeat"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; top: 15%; left: 20%;"><i class="fas fa-stopwatch"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 20%; left: 25%;"><i class="fas fa-medal"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; top: 70%; right: 15%;"><i class="fas fa-fire"></i></div>
+
+        <h2 class="text-center">Acompanhe a jornada abaixo</h2>
+
+        <div class="timeline-carousel-wrapper">
+
+            <!-- Seta de navegação esquerda (desktop) -->
+            <button class="timeline-nav-button timeline-nav-prev desktop-only" onclick="scrollTimeline(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="timeline-carousel" id="timelineCarousel">
+                <!-- Ping Pong 2019 -->
+                <div class="timeline-card expanded" data-index="0">
+                    <div class="year-watermark">2019</div>
+                    <img src="assets/img/pingpong.png" alt="Ping Pong">
+                    <div class="year-badge">2019</div>
+                    <div class="card-content">
+                        <h3>Ping Pong</h3>
+                        <p>Participei em torneios de ténis de mesa, trabalhando reflexos e coordenação.</p>
+                    </div>
+                </div>
+                <!-- Corrida 2020 -->
+                <div class="timeline-card" data-index="1">
+                    <div class="year-watermark">2020</div>
+                    <img src="assets/img/corrida.png" alt="Corrida">
+                    <div class="year-badge">2020</div>
+                    <div class="card-content">
+                        <h3>Corrida</h3>
+                        <p>Voltei às provas de estrada, melhorando a resistência e o foco mental.</p>
+                    </div>
+                </div>
+                <!-- Maratona 2021 -->
+                <div class="timeline-card" data-index="2">
+                    <div class="year-watermark">2021</div>
+                    <img src="assets/img/maratona.png" alt="Maratona">
+                    <div class="year-badge">2021</div>
+                    <div class="card-content">
+                        <h3>Maratona</h3>
+                        <p>Completei a minha primeira maratona, superando limites e disciplina.</p>
+                    </div>
+                </div>
+                <!-- Lesão 2022 -->
+                <div class="timeline-card" data-index="3">
+                    <div class="year-watermark">2022</div>
+                    <img src="assets/img/lesao.png" alt="Lesão e Pausa">
+                    <div class="year-badge">2022</div>
+                    <div class="card-content">
+                        <h3>Lesão &amp; Pausa</h3>
+                        <p>Uma lesão forçou‑me a parar, afastando‑me do treino e contribuindo para o ganho de peso.</p>
+                    </div>
+                </div>
+                <!-- Volta ao Treino 2025 -->
+                <div class="timeline-card" data-index="4">
+                    <div class="year-watermark">2025</div>
+                    <img src="assets/img/hero.png" alt="Volta ao Treino">
+                    <div class="year-badge">2025</div>
+                    <div class="card-content">
+                        <h3>Volta ao Treino</h3>
+                        <p>Com mais de 45 anos, retomei os treinos para mostrar que é possível recomeçar e perder peso.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seta de navegação direita (desktop) -->
+            <button class="timeline-nav-button timeline-nav-next desktop-only" onclick="scrollTimeline(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Dots para Desktop -->
+            <div class="timeline-dots desktop-only">
+                <div class="timeline-dot active" data-year="2019" data-index="0" onclick="expandCard(0)"></div>
+                <div class="timeline-dot" data-year="2020" data-index="1" onclick="expandCard(1)"></div>
+                <div class="timeline-dot" data-year="2021" data-index="2" onclick="expandCard(2)"></div>
+                <div class="timeline-dot" data-year="2022" data-index="3" onclick="expandCard(3)"></div>
+                <div class="timeline-dot" data-year="2025" data-index="4" onclick="expandCard(4)"></div>
+            </div>
+
+            <!-- Controles para Mobile (setas + dots) -->
+            <div class="timeline-controls">
+                <button class="timeline-nav-button" onclick="scrollTimeline(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="timeline-dots">
+                    <div class="timeline-dot active" data-year="2019" data-index="0" onclick="expandCard(0)"></div>
+                    <div class="timeline-dot" data-year="2020" data-index="1" onclick="expandCard(1)"></div>
+                    <div class="timeline-dot" data-year="2021" data-index="2" onclick="expandCard(2)"></div>
+                    <div class="timeline-dot" data-year="2022" data-index="3" onclick="expandCard(3)"></div>
+                    <div class="timeline-dot" data-year="2025" data-index="4" onclick="expandCard(4)"></div>
+                </div>
+
+                <button class="timeline-nav-button" onclick="scrollTimeline(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Motivacional -->
+    <section class="motivation-section">
+        <p class="motivation-text">
+            Quero mostrar que com acompanhamento, alguém que tem uma profissão além de PT, que nem sempre tem tempo
+            ou vontade de treinar, que está parado, tem mais de 45 anos, consegue voltar a estar em forma e perder
+            peso.
+            <strong>Vou provar isso.</strong>
+        </p>
+    </section>
+
+    <!-- Features Section -->
+    <section id="servicos" class="features">
+        <div class="container">
+            <h2 class="section-title white-bg">Por que escolher o RPC?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="feature-title">Treino Personalizado</h3>
+                    <p>Planos de treino únicos, adaptados aos teus objetivos, necessidades e disponibilidade. Cada
+                        exercício tem um propósito específico.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Ciência Aplicada</h3>
+                    <p>Metodologia baseada na mais recente investigação científica em fisiologia do exercício e nutrição
+                        desportiva.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">Saúde em Primeiro</h3>
+                    <p>Priorizamos sempre a tua saúde e bem-estar, construindo hábitos sustentáveis para toda a vida.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Flexibilidade Total</h3>
+                    <p>Treina quando e onde quiseres. Aulas gravadas e acompanhamento remoto que se adapta ao teu
+                        horário.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Resultados Comprovados</h3>
+                    <p>Acompanhamento detalhado do teu progresso com métricas precisas e ajustes constantes no plano.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Suporte Contínuo</h3>
+                    <p>Estou sempre disponível para esclarecer dúvidas, motivar e ajustar o teu plano conforme
+                        necessário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Features Section -->
+    <section id="app" class="app-features" style="position: relative;">
+        <!-- Floating Icons Background -->
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-dumbbell"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-chart-line"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-trophy"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-heart"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-fire"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-star"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-bolt"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-muscle"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-running"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-stopwatch"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-calendar-alt"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-medal"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-heartbeat"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-weight"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-bullseye"></i></div>
+        <div class="floating-icon" style="position: absolute;"><i class="fas fa-rocket"></i></div>
+
+        <div class="container">
+            <h2 class="section-title dark-bg">App Periodiza: Um Complemento</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: var(--white);">
+                Uma plataforma complementar para acompanhar o teu progresso e otimizar os teus resultados. O
+                acompanhamento personalizado e o teu compromisso continuam a ser o mais importante.
+            </p>
+            <div class="app-features-grid">
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <div class="app-feature-content">
+                        <h4>Registo de Pesos</h4>
+                        <p>Acompanha a evolução das cargas em cada exercício</p>
+                    </div>
+                    <div class="feature-details">
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">+25kg</div>
+                                <div class="stat-label">Progresso Médio</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100+</div>
+                                <div class="stat-label">Exercícios</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">📊</div>
+                                <div class="stat-label">Gráficos</div>
+                            </div>
+                        </div>
+                        <small>Histórico completo de todas as cargas utilizadas</small>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <div class="app-feature-content">
+                        <h4>Lista de Exercícios</h4>
+                        <p>Biblioteca completa com demonstrações e instruções</p>
+                    </div>
+                    <div class="feature-details">
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Exercícios</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">🎥</div>
+                                <div class="stat-label">Vídeos HD</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">📝</div>
+                                <div class="stat-label">Instruções</div>
+                            </div>
+                        </div>
+                        <small>Vídeos em alta definição com técnica perfeita</small>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-signal"></i>
+                    </div>
+                    <div class="app-feature-content">
+                        <h4>Níveis de Treino</h4>
+                        <p>Progressão adaptada ao teu nível (A, B, C)</p>
+                    </div>
+                    <div class="feature-details">
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Níveis</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">🚀</div>
+                                <div class="stat-label">Progressão</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">⚡</div>
+                                <div class="stat-label">Adaptação</div>
+                            </div>
+                        </div>
+                        <small>Sistema inteligente que se adapta ao teu ritmo</small>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div>
+                        <h4>Ajuste de Séries</h4>
+                        <p>Personalização de repetições e séries em tempo real</p>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="app-feature-content">
+                        <h4>Bioimpedância</h4>
+                        <p>Monitorização de peso, IMC, %MG, água e massa muscular</p>
+                    </div>
+                    <div class="feature-details">
+                        <div class="feature-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Métricas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">📈</div>
+                                <div class="stat-label">Tendências</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">🎯</div>
+                                <div class="stat-label">Objetivos</div>
+                            </div>
+                        </div>
+                        <small>Análise completa da composição corporal</small>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h4>Controlo de Frequência</h4>
+                        <p>Registo de treinos e análise de consistência</p>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4>Intensidade</h4>
+                        <p>Medição e ajuste da intensidade dos treinos</p>
+                    </div>
+                </div>
+                <div class="app-feature">
+                    <div class="app-feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div>
+                        <h4>Aulas Gravadas</h4>
+                        <p>Acesso a treinos completos disponíveis 24/7</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://rpc-personal-3ljb.glide.page/dl/da19fa" target="_blank" class="btn-primary"
+                    style="font-size: 1.1rem; padding: 1.2rem 3rem;">
+                    <i class="fas fa-rocket"></i> Experimentar a App Periodiza Grátis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section id="instagram" class="instagram-section">
+        <div class="container">
+            <h2 class="section-title white-bg">Últimas do Instagram</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-on-light);">
+                Acompanha as novidades, dicas e progressos dos nossos atletas no
+                <a href="https://www.instagram.com/rpc_personal_trainer" target="_blank"
+                    style="color: var(--primary-orange); font-weight: 600;">@rpc_personal_trainer</a>
+            </p>
+            <div class="instagram-grid">
+                <div class="instagram-post">
+                    <blockquote class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/p/DJMzFLwMRaC/" data-instgrm-version="14">
+                        <div style="padding: 2rem; text-align: center;">
+                            <a href="https://www.instagram.com/p/DJMzFLwMRaC/" target="_blank"
+                                style="color: var(--primary-orange); text-decoration: none;">
+                                <i class="fab fa-instagram"
+                                    style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                                <p style="color: var(--text-on-light);">Ver no Instagram</p>
+                            </a>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="instagram-post">
+                    <blockquote class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/p/DJMymnlsyXw/" data-instgrm-version="14">
+                        <div style="padding: 2rem; text-align: center;">
+                            <a href="https://www.instagram.com/p/DJMymnlsyXw/" target="_blank"
+                                style="color: var(--primary-orange); text-decoration: none;">
+                                <i class="fab fa-instagram"
+                                    style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                                <p style="color: var(--text-on-light);">Ver no Instagram</p>
+                            </a>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.instagram.com/rpc_personal_trainer" target="_blank" class="btn-primary"
+                    style="background: var(--primary-orange); color: var(--white);">
+                    <i class="fab fa-instagram"></i> Seguir no Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact" style="position: relative; overflow: hidden;">
+        <!-- Floating Icons Background for Contact -->
+        <div class="floating-icon" style="position: absolute; top: 15%; left: 8%;"><i class="fas fa-envelope"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 25%; right: 12%;"><i class="fas fa-phone"></i></div>
+        <div class="floating-icon" style="position: absolute; bottom: 30%; left: 15%;"><i class="fas fa-comment"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 15%; right: 8%;"><i
+                class="fas fa-paper-plane"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 40%; left: 3%;"><i class="fas fa-at"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 60%; right: 5%;"><i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 50%; left: 25%;"><i class="fas fa-comments"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; top: 80%; right: 20%;"><i class="fas fa-inbox"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 35%; right: 25%;"><i class="fas fa-handshake"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 40%; right: 15%;"><i
+                class="fas fa-user-friends"></i></div>
+        <div class="floating-icon" style="position: absolute; top: 10%; left: 30%;"><i class="fas fa-address-book"></i>
+        </div>
+        <div class="floating-icon" style="position: absolute; bottom: 10%; left: 5%;"><i class="fas fa-chat"></i></div>
+
+        <div class="container">
+            <h2 class="section-title light-bg">Vamos começar a tua transformação?</h2>
+            <h3 style="text-align: center; color: var(--white); margin-bottom: 3rem;">Contacta-me</h3>
+
+            <div class="contact-grid"
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; align-items: stretch;">
+                <!-- Instagram Card -->
+                <div class="horizontal-card"
+                    style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                    <img src="assets/img/rpc.jpg" alt="RPC Personal Trainer"
+                        style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-brown);">
+                    <div>
+                        <h4 style="color: var(--primary-brown); margin: 0 0 0.5rem 0; font-size: 1.1rem;">
+                            @rpc_personal_trainer</h4>
+                        <p style="color: var(--text-on-light); margin: 0 0 1rem 0; font-size: 0.9rem; opacity: 0.8;">
+                            Acompanha o dia a dia e as dicas de treino</p>
+                        <a href="https://www.instagram.com/rpc_personal_trainer" target="_blank"
+                            style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; padding: 0.7rem 1.3rem; border-radius: 20px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                            <i class="fab fa-instagram"></i> Seguir
+                        </a>
+                    </div>
+                </div>
+
+                <!-- YouTube Card -->
+                <div class="horizontal-card"
+                    style="background: rgba(255,255,255,0.9); padding: 1.5rem; border-radius: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+                    <img src="assets/img/rpc.jpg" alt="RPC YouTube"
+                        style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-brown);">
+                    <div>
+                        <h4 style="color: var(--primary-brown); margin: 0 0 0.5rem 0; font-size: 1.1rem;">@ruicarmo2007
+                        </h4>
+                        <p style="color: var(--text-on-light); margin: 0 0 1rem 0; font-size: 0.9rem; opacity: 0.8;">
+                            Vídeos completos e tutoriais de treino</p>
+                        <a href="https://www.youtube.com/@ruicarmo2007" target="_blank"
+                            style="background: #FF0000; color: white; padding: 0.7rem 1.3rem; border-radius: 20px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                            <i class="fab fa-youtube"></i> Subscrever
+                        </a>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Card -->
+                <div class="whatsapp-card"
+                    style="background: #25d366; color: white; padding: 1.5rem; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <i class="fab fa-whatsapp" style="font-size: 3rem;"></i>
+                    <div>
+                        <h4 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">Transforma a tua vida!</h4>
+                        <p style="margin: 0 0 1rem 0; font-size: 0.9rem; opacity: 0.95;">Resposta rápida e
+                            acompanhamento direto</p>
+                        <a href="https://wa.me/351918293687?text=Olá Rui! Gostaria de conhecer melhor o teu método de treino personalizado."
+                            target="_blank"
+                            style="background: rgba(255,255,255,0.2); color: white; padding: 0.7rem 1.3rem; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s;">
+                            <i class="fab fa-whatsapp"></i> Conversar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share-section">
+        <h3 style="color: var(--primary-brown); margin-bottom: 1rem;">Partilha com os teus amigos</h3>
+        <div class="share-buttons">
+            <a href="#" class="share-btn facebook" onclick="shareOn('facebook')" title="Partilhar no Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="share-btn instagram" onclick="shareOn('instagram')" title="Partilhar no Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="share-btn whatsapp" onclick="shareOn('whatsapp')" title="Partilhar no WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="share-btn linkedin" onclick="shareOn('linkedin')" title="Partilhar no LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 RPC Personal Trainer - Rui Pedro Carmo. Todos os direitos reservados.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">
+                Treino Personalizado | Ciência Aplicada | Saúde & Performance
+            </p>
+            <div class="credits">
+                Made with <i class="fas fa-heart"></i> by
+                <a href="https://okrolik.github.io/" target="_blank">Guilherme Coelho</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#inicio" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // ============================================
+        // TIMELINE CAROUSEL NAVIGATION - INICIALIZA PRIMEIRO
+        // ============================================
+
+        // Variáveis globais do timeline
+        var currentExpandedIndex = -1;
+        var totalCards = 5;
+
+        // Função para expandir um card específico
+        function expandCard(newIndex) {
+            var carousel = document.getElementById('timelineCarousel');
+            if (!carousel) return;
+
+            var cards = carousel.querySelectorAll('.timeline-card');
+            var dots = document.querySelectorAll('.timeline-dot');
+
+            // Se clicar no mesmo card que já está expandido, não faz nada
+            if (newIndex === currentExpandedIndex) {
+                return;
+            }
+
+            // Remove todas as classes de todos os cards
+            cards.forEach(card => {
+                card.classList.remove('expanded', 'prev-card', 'next-card', 'next-next-card');
+            });
+
+            // Remove a classe active de todos os dots (tanto desktop quanto mobile)
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+
+            // Atualiza o índice atual
+            currentExpandedIndex = newIndex;
+
+            // Calcula índices com navegação circular
+            var prevIndex = (newIndex - 1 + totalCards) % totalCards;
+            var nextIndex = (newIndex + 1) % totalCards;
+            var nextNextIndex = (newIndex + 2) % totalCards; // Para desktop: atual + próximo + próximo+1
+
+            // Busca os cards pelos atributos data-index
+            var currentCard = carousel.querySelector(`.timeline-card[data-index="${currentExpandedIndex}"]`);
+            var prevCard = carousel.querySelector(`.timeline-card[data-index="${prevIndex}"]`);
+            var nextCard = carousel.querySelector(`.timeline-card[data-index="${nextIndex}"]`);
+            var nextNextCard = carousel.querySelector(`.timeline-card[data-index="${nextNextIndex}"]`);
+
+            // Verifica se está no desktop ou mobile
+            var isDesktop = window.innerWidth > 768;
+
+            // Adiciona as classes apropriadas aos cards encontrados
+            if (currentCard) {
+                currentCard.classList.add('expanded');
+            }
+
+            if (isDesktop) {
+                // Apenas 3 cards visíveis no desktop
+                currentCard?.classList.add('expanded');
+                nextCard?.classList.add('next-card');
+                nextNextCard?.classList.add('next-next-card');
+            }
+            else {
+                // MOBILE: Mostra anterior, atual, próximo
+                // Exemplo: Atual (prev-card) | Pingpong (expanded) | Corrida (next-card)
+                if (prevCard) {
+                    prevCard.classList.add('prev-card');
+                }
+                if (nextCard) {
+                    nextCard.classList.add('next-card');
+                }
+            }
+
+            // Adiciona a classe active a TODOS os dots com o índice atual (desktop e mobile)
+            dots.forEach(dot => {
+                if (parseInt(dot.getAttribute('data-index')) === currentExpandedIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        // Função de navegação com setas (global)
+        function scrollTimeline(direction) {
+            // Calcula o próximo índice com navegação circular
+            var newIndex = currentExpandedIndex + direction;
+
+            // Navegação circular
+            if (newIndex >= totalCards) {
+                newIndex = 0; // Volta ao primeiro
+            } else if (newIndex < 0) {
+                newIndex = totalCards - 1; // Vai para o último
+            }
+
+            expandCard(newIndex);
+        }
+
+        // ============================================
+        // FIM DO CÓDIGO DO TIMELINE
+        // ============================================
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileNavLinks = document.querySelector('.nav-links');
+                    const menuToggle = document.querySelector('.menu-toggle');
+                    if (mobileNavLinks && mobileNavLinks.classList.contains('active')) {
+                        mobileNavLinks.classList.remove('active');
+                        // Volta o ícone para hamburger
+                        if (menuToggle) {
+                            const icon = menuToggle.querySelector('i');
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinksMenu = document.querySelector('.nav-links');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                navLinksMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (navLinksMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav')) {
+                    navLinksMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Share functions with native system integration
+        function shareOn(platform) {
+            const url = window.location.href;
+            const title = 'RPC Personal Trainer - Treino Personalizado & Ciência Aplicada';
+            const text = 'Descobre o RPC Personal Trainer e atinge o teu melhor físico e mental!';
+
+            // Try native sharing first (mobile devices)
+            if (navigator.share && platform !== 'facebook' && platform !== 'linkedin') {
+                navigator.share({
+                    title: title,
+                    text: text,
+                    url: url,
+                }).catch((error) => {
+                    console.log('Native sharing failed, falling back to URL method');
+                    fallbackShare(platform, url, title, text);
+                });
+            } else {
+                fallbackShare(platform, url, title, text);
+            }
+        }
+
+        function fallbackShare(platform, url, title, text) {
+            const encodedUrl = encodeURIComponent(url);
+            const encodedTitle = encodeURIComponent(title);
+            const encodedText = encodeURIComponent(text);
+
+            let shareUrl = '';
+
+            switch (platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+                    break;
+                case 'instagram':
+                    // Instagram doesn't allow direct sharing via URL, so we copy to clipboard
+                    navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+                        alert('Link copiado! Cole no Instagram para partilhar 📋✨');
+                    });
+                    return;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodedText} ${encodedUrl}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+                    break;
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        // Form submission (placeholder) - só adiciona se existir
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Obrigado pela tua mensagem! Entraremos em contacto contigo em breve.');
+            });
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards and other elements
+        document.querySelectorAll('.feature-card, .app-feature, .instagram-post').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced scroll reveal animation
+        const scrollRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-title, .hero-content, .feature-card, .app-feature').forEach(el => {
+            el.classList.add('scroll-reveal');
+            scrollRevealObserver.observe(el);
+        });
+
+        // Dynamic app feature interactions
+        document.querySelectorAll('.app-feature').forEach((feature, index) => {
+            // Add staggered animation delay
+            feature.style.animationDelay = `${index * 0.1}s`;
+
+            // Mouse enter effect
+            feature.addEventListener('mouseenter', () => {
+                // Create particle effect
+                createParticles(feature);
+
+                // Add shake animation to icon
+                const icon = feature.querySelector('.app-feature-icon i');
+                if (icon) {
+                    icon.style.animation = 'shake 0.5s ease-in-out';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 500);
+                }
+            });
+        });
+
+        // Particle creation function
+        function createParticles(element) {
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.innerHTML = '✨';
+                particle.style.cssText = `
+                    position: absolute;
+                    pointer-events: none;
+                    font-size: 12px;
+                    color: #FFE135;
+                    z-index: 1000;
+                    animation: particleFloat 1s ease-out forwards;
+                `;
+
+                const rect = element.getBoundingClientRect();
+                particle.style.left = Math.random() * rect.width + rect.left + 'px';
+                particle.style.top = rect.top + Math.random() * rect.height + 'px';
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+
+        // Add particle animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateY(-20px) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-40px) scale(0);
+                }
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px) rotate(-5deg); }
+                75% { transform: translateX(5px) rotate(5deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Apply typing effect to hero title when page loads
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 50);
+            }
+        });
+
+        // Interactive navigation highlights
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.transform = 'translateY(-2px)';
+                link.style.textShadow = '0 4px 8px rgba(255, 225, 53, 0.3)';
+            });
+
+            link.addEventListener('mouseleave', () => {
+                link.style.transform = 'translateY(0)';
+                link.style.textShadow = 'none';
+            });
+        });
+
+        // Back to top button functionality with enhanced animation
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+
+            // Parallax effect for floating icons
+            document.querySelectorAll('.floating-icon').forEach((icon, index) => {
+                const speed = (index + 1) * 0.1;
+                icon.style.transform = `translateY(${rate * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+
+            if (scrolled > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Add click ripple effect to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .contact-card').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+                button.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Adiciona event listeners aos cards do timeline quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.getElementById('timelineCarousel');
+            if (carousel) {
+                const cards = carousel.querySelectorAll('.timeline-card');
+
+                cards.forEach((card) => {
+                    // Define cursor como pointer apenas no desktop
+                    function updateCursor() {
+                        if (window.innerWidth > 768) {
+                            card.style.cursor = 'pointer';
+                        } else {
+                            card.style.cursor = 'default';
+                        }
+                    }
+                    
+                    updateCursor();
+                    window.addEventListener('resize', updateCursor);
+
+                    card.addEventListener('click', function (e) {
+                        // Bloqueia completamente cliques nos cards no mobile
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
+                        
+                        // Previne que o clique nos elementos internos também dispare
+                        e.stopPropagation();
+                        // Usa o data-index do card ao invés do index do forEach
+                        const cardIndex = parseInt(card.getAttribute('data-index'));
+                        expandCard(cardIndex);
+                    });
+                });
+
+                // Implementa swipe no carousel para mobile
+                let touchStartX = 0;
+                let touchStartY = 0;
+                let touchEndX = 0;
+                let touchEndY = 0;
+
+                carousel.addEventListener('touchstart', function (e) {
+                    if (window.innerWidth <= 768) {
+                        touchStartX = e.changedTouches[0].screenX;
+                        touchStartY = e.changedTouches[0].screenY;
+                    }
+                }, { passive: true });
+
+                carousel.addEventListener('touchend', function (e) {
+                    if (window.innerWidth <= 768) {
+                        touchEndX = e.changedTouches[0].screenX;
+                        touchEndY = e.changedTouches[0].screenY;
+                        handleSwipeGesture();
+                    }
+                }, { passive: true });
+
+                function handleSwipeGesture() {
+                    const deltaX = touchEndX - touchStartX;
+                    const deltaY = touchEndY - touchStartY;
+                    const minSwipeDistance = 50; // Distância mínima para considerar como swipe
+
+                    // Verifica se o movimento horizontal é maior que o vertical (swipe horizontal)
+                    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+                        if (deltaX > 0) {
+                            // Swipe para direita = voltar
+                            scrollTimeline(-1);
+                        } else {
+                            // Swipe para esquerda = avançar
+                            scrollTimeline(1);
+                        }
+                    }
+                }
+            }
+            expandCard(0);
+            window.addEventListener('resize', () => expandCard(currentExpandedIndex));
+
+        });
+    </script>
+
+    <!-- Instagram Embed Script -->
+    <script async src="//www.instagram.com/embed.js"></script>
+</body>
+
+</html>
